@@ -14,7 +14,7 @@ const JobListing = ({IsHome=false}) => {
                 console.log("error fetching",error);
                 setJobs([])
             }finally{
-                setLoading(false)
+               // setLoading(false)
             }       
         }
         fetchJobs()
@@ -29,9 +29,12 @@ const JobListing = ({IsHome=false}) => {
                         {IsHome? 'Recent jobs' : 'Browse Jobs'  }
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {jobListing.map((job) => {
+                        {loading ? (<h2>Loading...</h2>)
+                        :<>{jobListing.map((job) => {
                             return <JobCard key={job.id} job={job}/>
-                        })}
+                        })}</>
+                        }
+                        
                     </div>
                 </div>
             </section>
