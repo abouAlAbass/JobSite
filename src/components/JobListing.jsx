@@ -1,8 +1,24 @@
-import React, { useState } from 'react'
-import jobs from '../data/jobs.json'
+import { useState,useEffect } from 'react';
 import JobCard from './JobCard'
 import { Link } from 'react-router-dom';
 const JobListing = ({IsHome=false}) => {    
+    const [jobs,setJobs]=useState([])
+    const [loading,setLoading] = useState(true)
+    useEffect(()=>{
+        const fetchJobs = async ()=>{
+            try {
+                const res = await fetch("http://localhost:8000/jobs")                
+                const data =await res.json()                
+                setJobs(data)
+            } catch (error) {
+                console.log("error fetching",error);
+                setJobs([])
+            }finally{
+                setLoading(false)
+            }       
+        }
+        fetchJobs()
+    },[])
     
     const jobListing = (IsHome) ? jobs.slice(0,3) : jobs
     return (
