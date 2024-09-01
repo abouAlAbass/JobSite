@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import jobs from '../data/jobs.json'
 import JobCard from './JobCard'
 const JobListing = () => {    
+    
     const recentJobs = jobs.slice(0,3) 
     return (
         <>

@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const JobCard = ({job}) => {
-  return (
+    const [showFullDescription,setShowFullDescription] = useState(false)
+    let jobDescription = job.description
+    if(!showFullDescription){
+        jobDescription = jobDescription.slice(0,90)+"..."
+    }
+     return (      
     <div  className="bg-white rounded-xl shadow-md relative">
                                 <div className="p-4">
                                     <div className="mb-6">
@@ -10,9 +15,9 @@ const JobCard = ({job}) => {
                                     </div>
 
                                     <div className="mb-5">
-                                        {job.description}
+                                        {jobDescription}
                                     </div>
-
+                                    <button className="text-indigo-500 mb-5 hover:text-indigo-600">{showFullDescription ? 'Less' : 'More'}</button>
                                     <h3 className="text-indigo-500 mb-2">{job.salary} / Year</h3>
 
                                     <div className="border border-gray-100 mb-5"></div>
