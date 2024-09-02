@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 const JobListing = ({ IsHome = false }) => {
     const [jobs, setJobs] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const apiUrl = (IsHome) ? "api/jobs?_limit=3" : "api/jobs"
    
     useEffect(() => {
@@ -12,12 +12,12 @@ const JobListing = ({ IsHome = false }) => {
             try {
                 const res = await fetch(apiUrl)
                 const data = await res.json()
-                setJobs(data)
+                setJobs(data)                
             } catch (error) {
                 console.log("error fetching", error);
                 setJobs([])
             } finally {
-                // setLoading(false)
+                setLoading(false)
             }
         }
         fetchJobs()
