@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom'
 const JobCard = ({job}) => {
     const [showFullDescription,setShowFullDescription] = useState(false)
     let jobDescription = job.description
-    if(!showFullDescription){
-        jobDescription = jobDescription.slice(0,90)+"..."
+    console.log(jobDescription);
+    
+    if(!showFullDescription && jobDescription!=undefined){        
+
+            jobDescription =(jobDescription.length>89)? jobDescription.slice(0,90)+"..."  :  jobDescription    
+          
     }
      return (      
     <div  className="bg-white rounded-xl shadow-md relative">

@@ -1,21 +1,43 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const AddJobPage = () => {
+const AddJobPage = ({addJobSubmit}) => {
 
   const [title,setTitle] = useState('')
-  const [type,setType] = useState('')
+  const [type,setType] = useState('Full-Time')
   const [Description,setDescription] = useState('')
   const [location,setLocation] = useState('')
-  const [salary,setSalary] = useState('')
+  const [salary,setSalary] = useState('$50K - 60K')
   const [CompanyName,setCompanyName] = useState('')
   const [ContactEmail,setContactEmail] = useState('')
-  const [CompanyPhone,setCompanyPhone] = useState('')
+  const [ContactPhone,setContactPhone] = useState('')
   const [CompanyDescription,setCompanyDescription] = useState('')
+
+  const navigate = useNavigate()
+  const submitForm = (e)=>{
+    e.preventDefault();
+    const newJob = {
+      title,
+      type,
+      location,
+      Description,
+      salary,
+      Company:{
+        name: CompanyName,
+        description : Description,
+        ContactEmail,
+        ContactPhone 
+
+      },
+    }
+    addJobSubmit(newJob)
+    return navigate('/jobs')
+  }
   return (
     <section className="bg-indigo-50">
       <div className="container m-auto max-w-2xl py-24">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-          <form>
+          <form onSubmit={submitForm}>
             <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
             <div className="mb-4">
@@ -156,8 +178,8 @@ const AddJobPage = () => {
                 className="block text-gray-700 font-bold mb-2"
               >Contact Phone</label>
               <input
-                   value={CompanyPhone}
-                   onChange={(e)=>{setCompanyPhone(e.target.value)}}
+                   value={ContactPhone}
+                   onChange={(e)=>{setContactPhone(e.target.value)}}
                 type="tel"
                 id="contact_phone"
                 name="contact_phone"
