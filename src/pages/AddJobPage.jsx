@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const AddJobPage = () => {
+
+  const [title,setTitle] = useState('')
+  const [type,setType] = useState('')
+  const [Description,setDescription] = useState('')
+  const [location,setLocation] = useState('')
+  const [salary,setSalary] = useState('')
+  const [CompanyName,setCompanyName] = useState('')
+  const [ContactEmail,setContactEmail] = useState('')
+  const [CompanyPhone,setCompanyPhone] = useState('')
+  const [CompanyDescription,setCompanyDescription] = useState('')
   return (
     <section className="bg-indigo-50">
       <div className="container m-auto max-w-2xl py-24">
@@ -11,6 +21,8 @@ const AddJobPage = () => {
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2">Job Type</label>
               <select
+              value={type}
+              onChange={(e)=>{setType(e.target.value)}}
                 id="type"
                 name="type"
                 className="border rounded w-full py-2 px-3"
@@ -28,6 +40,8 @@ const AddJobPage = () => {
               <input
                 type="text"
                 id="title"
+                value={title}
+                onChange={(e)=>{setTitle(e.target.value)}}
                 name="title"
                 className="border rounded w-full py-2 px-3 mb-2"
                 placeholder="eg. Beautiful Apartment In Miami"
@@ -40,6 +54,8 @@ const AddJobPage = () => {
                 className="block text-gray-700 font-bold mb-2"
               >Description</label>
               <textarea
+               value={Description}
+               onChange={(e)=>{setDescription(e.target.value)}}
                 id="description"
                 name="description"
                 className="border rounded w-full py-2 px-3"
@@ -51,6 +67,8 @@ const AddJobPage = () => {
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
               >Salary</label>
               <select
+              value={salary}
+              onChange={(e)=>{setSalary(e.target.value)}}
                 id="salary"
                 name="salary"
                 className="border rounded w-full py-2 px-3"
@@ -75,6 +93,8 @@ const AddJobPage = () => {
                 Location
               </label>
               <input
+                 value={location}
+                 onChange={(e)=>{setLocation(e.target.value)}}
                 type='text'
                 id='location'
                 name='location'
@@ -88,6 +108,8 @@ const AddJobPage = () => {
               <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
               >Company Name</label>
               <input
+                 value={CompanyName}
+                 onChange={(e)=>{setCompanyName(e.target.value)}}
                 type="text"
                 id="company"
                 name="company"
@@ -102,6 +124,8 @@ const AddJobPage = () => {
                 className="block text-gray-700 font-bold mb-2"
               >Company Description</label>
               <textarea
+                        value={CompanyDescription}
+                        onChange={(e)=>{setCompanyDescription(e.target.value)}}
                 id="company_description"
                 name="company_description"
                 className="border rounded w-full py-2 px-3"
@@ -116,6 +140,8 @@ const AddJobPage = () => {
                 className="block text-gray-700 font-bold mb-2"
               >Contact Email</label>
               <input
+                 value={ContactEmail}
+                 onChange={(e)=>{setContactEmail(e.target.value)}}
                 type="email"
                 id="contact_email"
                 name="contact_email"
@@ -130,6 +156,8 @@ const AddJobPage = () => {
                 className="block text-gray-700 font-bold mb-2"
               >Contact Phone</label>
               <input
+                   value={CompanyPhone}
+                   onChange={(e)=>{setCompanyPhone(e.target.value)}}
                 type="tel"
                 id="contact_phone"
                 name="contact_phone"
